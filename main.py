@@ -7,9 +7,9 @@ def display_menuinicial():
     )
 
 
-def cont_vendas(vendas: int):
-    vendas = vendas + 1
-    return vendas
+def get_cont_vendas(vendas: int):
+    cont_vendas += vendas
+    return cont_vendas
 
 
 def get_acum_vlr_bruto(vlr_bruto: float):
@@ -50,6 +50,7 @@ def get_vlr_bruto_desc(vlr_bruto: float, vlr_desc: float):
 
 
 def get_registrarvenda():
+    vendas = 1
     nome_prod = str(input("\nNome do produto: "))
     vlr_unit = float(input("Valor unitário: "))
     vlr_qtd = int(input("Quantidade: "))
@@ -57,11 +58,11 @@ def get_registrarvenda():
     desc = get_desc(vlr_bruto)
     vlr_desc = get_vlr_desc(desc, vlr_bruto)
     vlr_bruto_desc = get_vlr_bruto_desc(vlr_bruto, vlr_desc)
-    cont_vendas()
+    get_cont_vendas(vendas)
     get_acum_vlr_bruto(vlr_bruto)
     get_acum_vlr_desc(vlr_desc)
     get_acum_vlr_bruto_desc(vlr_bruto_desc)
-    result = print(f"\nNome do produto: {nome_prod}"
+    result1 = print(f"\nNome do produto: {nome_prod}"
                    f"\nValor unitário: R$ {vlr_unit:.2f}"
                    f"\nQuantidade: {vlr_qtd:.0f}"
                    f"\n\nValor Bruto da venda: R$ {vlr_bruto:.2f}"
@@ -70,15 +71,29 @@ def get_registrarvenda():
                    f"\nValor final da venda: R$ {vlr_bruto_desc:.2f}"
                    "\nVenda registrada com sucesso!"
                    )
-    return result
+    return result1
 
 
 def get_resumoparcial():
-    print("\n=== RESUMO PARCIAL ===")
+    result2 = print("\n=== RESUMO PARCIAL ==="
+                    f"\n\nTotal de vendas realizadas: R$ {cont_vendas:.0f}"
+                    f"\nTotal bruto vendido: R$ {acum_vlr_bruto:.2f}"
+                    f"\nTotal de descontos concedidos: R$ {acum_vlr_desc:.2f}"
+                    f"\nTotal líquido vendido: R$ {acum_vlr_bruto_desc:.2f}"
+                    )
+    return result2
 
 
 def get_resumofinal():
-    print("\n=== RESUMO FINAL ===")
+    result3 = print("\n=== RESUMO FINAL ==="
+                    f"\n\nTotal de vendas realizadas: R$ {cont_vendas:.0f}"
+                    f"\nTotal bruto vendido: R$ {acum_vlr_bruto:.2f}"
+                    f"\nTotal de descontos concedidos: R$ {acum_vlr_desc:.2f}"
+                    f"\nTotal líquido vendido: R$ {acum_vlr_bruto_desc:.2f}"
+                    "\n\nSistema encerrado."
+                    )
+    return result3
+
 
 def display_uxui():
     while True:
@@ -95,12 +110,13 @@ def display_uxui():
                 get_resumofinal()
                 break
         except ValueError:
-            print("Opção Inválida! Por favor digite um número conforme as opções válidas.")
+            print("Opção inválida. Tente novamente.")
 
 
-vendas = 0
+cont_vendas = 0
 acum_vlr_bruto = 0
 acum_vlr_desc = 0
 acum_vlr_bruto_desc = 0
+
 
 display_uxui()
