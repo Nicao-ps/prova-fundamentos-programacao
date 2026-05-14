@@ -2,27 +2,31 @@
 def display_menuinicial():
     print("\n=== SISTEMA DE VENDAS ===")
     print("\n1 - Registrar venda"
-      "\n2 - Ver resumo parcial"
-      "\n3 - Encerrar sistema"
+          "\n2 - Ver resumo parcial"
+          "\n3 - Encerrar sistema"
     )
 
 
 def get_cont_vendas(vendas: int):
+    global cont_vendas
     cont_vendas += vendas
     return cont_vendas
 
 
 def get_acum_vlr_bruto(vlr_bruto: float):
+    global acum_vlr_bruto
     acum_vlr_bruto += vlr_bruto
     return acum_vlr_bruto
 
 
 def get_acum_vlr_desc(vlr_desc: float):
+    global acum_vlr_desc
     acum_vlr_desc += vlr_desc
     return acum_vlr_desc
 
 
 def get_acum_vlr_bruto_desc(vlr_bruto_desc: float):
+    global acum_vlr_bruto_desc
     acum_vlr_bruto_desc += vlr_bruto_desc
     return acum_vlr_bruto_desc
 
