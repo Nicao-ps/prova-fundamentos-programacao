@@ -27,4 +27,16 @@ git branch -m master main
 # Alterei o branch padrão de master para main, para mitigar possíveis inconsistências futuras que poderiam ser geradas pela diferença no branch no momento em que fosse dar os commit, principalmente da máquina local para o repositório do projeto no github.
 
 git pull origin main --allow-unrelated-histories
-# Solicitei uma busca com o comando pull e forcei com o comando --allow-unrelated-hitories a permitir a captura de inconsistências entre os arquivos presentes no repertório web do github com a máquina local
+# Solicitei uma busca com o comando pull e forcei com o comando --allow-unrelated-hitories a permitir a captura de inconsistências entre os arquivos presentes no repertório web do projeto no github com o repositório presente na máquina local para trazer o arquivo README.md.
+
+git status
+# Para demonstrar os arquivos no repositório local que já se encontram rastreáveis para o commit.
+
+git add .
+# Adicionei todos os arquivos listados como rastreáveis para o rastreio e commit.
+
+git commit -m "cria o arquivo main.py e modifica o arquivo README.md para inclusão de mais conteúdo"
+# Adicionei a mensagem de log explicando o commit que cria o arquivo main.py no repositório web do projeto no github e inclui os comandos até então realizados no repositório .git local.
+
+git push origin main
+# Enviei com o comando push o primeiro commit para o repositório do projeto no github. 
